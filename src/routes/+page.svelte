@@ -14,9 +14,13 @@ function getRandomItems(arr, count) {
   return selected;
 }
 
-let randomSymptoms = getRandomItems(symptoms, 3);
-let randomMedications = getRandomItems(medications, 2);
-let randomCondition = getRandomItems(conditions, 1)[0];
+let numberOfSymptoms = Math.floor(Math.random() * 3) + 1;
+let numberOfConditions = Math.floor(Math.random() * 2) + 1;
+let numberOfMedications = Math.floor(Math.random() * 3) + 1;
+
+let randomSymptoms = getRandomItems(symptoms, numberOfSymptoms);
+let randomCondition = getRandomItems(conditions, numberOfConditions);
+let randomMedications = getRandomItems(medications, numberOfMedications);
 </script>
 
 <main>
@@ -30,7 +34,9 @@ let randomCondition = getRandomItems(conditions, 1)[0];
 
     <h4>Patient informs you they have had these conditions:</h4>
     <ul>
-        <li>{randomCondition}</li>
+        {#each randomCondition as condition}
+        <li>{condition}</li>
+        {/each}
     </ul>
 
     <div>
@@ -45,9 +51,9 @@ let randomCondition = getRandomItems(conditions, 1)[0];
 
     </div>
 
-    <button onclick={() => {
+<button onclick={() => {
         location.reload();
-    }}>New Scenario
+    }}><b>New Scenario</b>
 </button>
 
 </main>
@@ -66,4 +72,30 @@ let randomCondition = getRandomItems(conditions, 1)[0];
     h4, ul {
     font-size: 2em;
   }
+
+    button {
+        background-color: midnightblue;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 1.5em;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgb(0, 0, 74);
+    }
+
+    @media (max-width: 768px) {
+        h4, ul {
+            font-size: 1.2em;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 8px 16px;
+        }
+    }
 </style>

@@ -11,7 +11,7 @@ const content = {
     "Appendicitis",
     "Fracture",
     "Concussion",
-    "Chronic obstructive pulmonary disease",
+    "Chronic obstructive pulmonary disease (COPD)",
     "Anemia",
     "Migraine",
     "Infection",
